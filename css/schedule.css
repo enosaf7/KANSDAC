@@ -1,0 +1,111 @@
+/* Schedule Container Styles */
+.schedule-container {
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.schedule-header {
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.schedule-header h3 {
+    color: var(--text-color);
+    margin: 0 0 5px 0;
+    font-size: 1.5rem;
+}
+
+.schedule-date {
+    color: var(--secondary-text-color);
+    font-size: 0.9rem;
+}
+
+/* Schedule Events Styles */
+.schedule-events {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.schedule-event {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+    background-color: var(--card-bg-color);
+    border-radius: 6px;
+    transition: transform 0.2s ease;
+}
+
+.schedule-event:hover {
+    transform: translateX(5px);
+}
+
+.event-time {
+    min-width: 100px;
+    padding: 5px 10px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.event-details {
+    margin-left: 15px;
+    flex-grow: 1;
+}
+
+.event-activity {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.event-leader {
+    font-size: 0.9rem;
+    color: var(--secondary-text-color);
+}
+
+/* No Schedule Message */
+.no-schedule {
+    text-align: center;
+    padding: 20px;
+    color: var(--secondary-text-color);
+    font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .schedule-event {
+        flex-direction: column;
+    }
+
+    .event-time {
+        margin-bottom: 10px;
+    }
+
+    .event-details {
+        margin-left: 0;
+    }
+}
+
+/* Dark Theme Support */
+[data-theme="dark"] .schedule-container {
+    background-color: var(--dark-bg-color);
+}
+
+[data-theme="dark"] .schedule-event {
+    background-color: var(--dark-card-bg-color);
+}
+
+[data-theme="dark"] .event-activity {
+    color: var(--dark-text-color);
+}
+
+[data-theme="dark"] .event-leader {
+    color: var(--dark-secondary-text-color);
+}

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Officials Portal</title>
+    <link rel="stylesheet" href="css/officials-styles.css">
+    <link rel="stylesheet" href="css/prayer-requests.css">
+    <link rel="stylesheet" href="css/testimonies.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="js/prayer-requests.js" defer></script>
+    <script src="js/thanksgivings.js" defer></script>
+    <script src="js/announcements.js" defer></script>
+    <script src="js/schedule.js" defer></script>
+</head>
+<body>
+    <div class="portal-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <img src="logo.png" alt="Logo" class="logo">
+                <h2>Officials Portal</h2>
+            </div>
+            
+            <ul class="nav-links">
+                <li class="active" data-section="prayers">
+                    <a href="#prayers">
+                        <i class="fas fa-pray"></i>
+                        <span>Prayer Requests</span>
+                    </a>
+                </li>
+                <li data-section="announcements">
+                    <a href="#announcements">
+                        <i class="fas fa-bullhorn"></i>
+                        <span>Announcements</span>
+                    </a>
+                </li>
+                <li data-section="pending-announcements-section">
+                    <a href="#pending-announcements-section">
+                        <i class="fas fa-bullhorn"></i>
+                        <span>Pending Announcements</span>
+                    </a>
+                </li>
+                <li data-section="weekly-schedule">
+                    <a href="#weekly-schedule">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Weekly Schedule</span>
+                    </a>
+                </li>
+                <li data-section="testimonies">
+                    <a href="#testimonies">
+                        <i class="fas fa-dove"></i>
+                        <span>Testimonies</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <a href="index.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Prayer Requests Section -->
+            <section id="prayers" class="content-section active">
+                <div class="section-header">
+                    <h2>Prayer Requests & Thanksgiving</h2>
+                    <div class="filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="request">Prayer Requests</button>
+                        <button class="filter-btn" data-filter="thanksgiving">Thanksgiving</button>
+                        <button class="filter-btn" data-filter="prayed">Prayed For</button>
+                        <button class="filter-btn" data-filter="pending">Not Yet Prayed</button>
+                    </div>
+                </div>
+
+                <div class="search-bar">
+                    <input type="search" id="prayerSearch" placeholder="Search prayers...">
+                </div>
+
+                <div class="prayers-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-pray"></i>
+                        <div class="stat-info">
+                            <h4>Total Requests</h4>
+                            <span id="totalRequests">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-hands-praying"></i>
+                        <div class="stat-info">
+                            <h4>Prayed For</h4>
+                            <span id="prayedCount">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-clock"></i>
+                        <div class="stat-info">
+                            <h4>Pending</h4>
+                            <span id="pendingCount">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prayers-grid" id="prayersGrid">
+                    <!-- Prayer requests will be displayed here -->
+                </div>
+            </section>
+
+            <!-- Announcements Section -->
+            <section id="announcements" class="content-section">
+                <div class="section-header">
+                    <h2>Announcements</h2>
+                    <div class="filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="pending">Pending</button>
+                        <button class="filter-btn" data-filter="approved">Approved</button>
+                    </div>
+                </div>
+
+                <div class="search-bar">
+                    <input type="search" id="announcementSearch" placeholder="Search announcements...">
+                </div>
+
+                <div class="announcements-grid">
+                    <!-- Announcements will be displayed here -->
+                </div>
+            </section>
+
+            <!-- Weekly Schedule Section -->
+            <section id="weekly-schedule" class="content-section">
+                <div class="section-header">
+                    <h2>Weekly Program Schedule</h2>
+                </div>
+
+                <div class="section-content">
+                    <form id="schedule-form" class="schedule-form" onsubmit="uploadWeeklySchedule(event)">
+                        <div class="form-group">
+                            <label for="schedule-title">Schedule Title*</label>
+                            <input type="text" id="schedule-title" required placeholder="e.g., Weekly Program Schedule">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="schedule-date">Schedule Date*</label>
+                            <input type="date" id="schedule-date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Program Events</label>
+                            <div id="schedule-events" class="schedule-events-container">
+                                <!-- Event rows will be added here -->
+                            </div>
+                            <button type="button" class="add-event-btn" onclick="addEventRow()">
+                                <i class="fas fa-plus"></i> Add Event
+                            </button>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-upload"></i> Upload Schedule
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Pending Announcements Section -->
+            <section id="pending-announcements-section" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-bullhorn"></i> Pending Announcements</h2>
+                </div>
+                <div id="pending-announcements" class="announcements-grid">
+                    <!-- Pending announcements will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Testimonies Section -->
+            <section id="testimonies" class="content-section">
+                <div class="section-header">
+                    <h2>Testimonies & Thanksgivings</h2>
+                    <div class="filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="approved">Approved</button>
+                        <button class="filter-btn" data-filter="pending">Pending</button>
+                        <button class="filter-btn" data-filter="healing">Divine Healing</button>
+                        <button class="filter-btn" data-filter="provision">Divine Provision</button>
+                        <button class="filter-btn" data-filter="protection">Divine Protection</button>
+                        <button class="filter-btn" data-filter="guidance">Divine Guidance</button>
+                        <button class="filter-btn" data-filter="other">Other Blessings</button>
+                    </div>
+                </div>
+
+                <div class="search-bar">
+                    <input type="search" id="testimonySearch" placeholder="Search testimonies...">
+                </div>
+
+                <div class="testimonies-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-dove"></i>
+                        <div class="stat-info">
+                            <h4>Total Testimonies</h4>
+                            <span id="totalTestimonies">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-check-circle"></i>
+                        <div class="stat-info">
+                            <h4>Approved</h4>
+                            <span id="approvedCount">0</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-clock"></i>
+                        <div class="stat-info">
+                            <h4>Pending</h4>
+                            <span id="pendingTestimonies">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonies-grid" id="testimoniesGrid">
+                    <!-- Testimonies will be displayed here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Initialize the portal
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up navigation
+            const navLinks = document.querySelectorAll('.nav-links li');
+            const sections = document.querySelectorAll('.content-section');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const targetSection = this.dataset.section;
+                    
+                    // Update active nav link
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show target section, hide others
+                    sections.forEach(section => {
+                        if (section.id === targetSection) {
+                            section.classList.add('active');
+                            // Load section-specific content
+                            if (targetSection === 'prayers') {
+                                displayPrayerRequests();
+                            } else if (targetSection === 'testimonies') {
+                                displayTestimonies();
+                            } else if (targetSection === 'pending-announcements-section') {
+                                displayPendingAnnouncements();
+                            } else if (targetSection === 'weekly-schedule') {
+                                displayWeeklySchedule();
+                            }
+                        } else {
+                            section.classList.remove('active');
+                        }
+                    });
+                });
+            });
+
+            // Initial load
+            displayPrayerRequests();
+            displayTestimonies();
+            displayPendingAnnouncements();
+
+            // Set up search functionality
+            const prayerSearch = document.getElementById('prayerSearch');
+            if (prayerSearch) {
+                prayerSearch.addEventListener('input', function() {
+                    displayPrayerRequests(document.querySelector('.filter-btn.active').dataset.filter);
+                });
+            }
+
+            const testimonySearch = document.getElementById('testimonySearch');
+            if (testimonySearch) {
+                testimonySearch.addEventListener('input', function() {
+                    displayTestimonies(document.querySelector('.filter-btn.active').dataset.filter);
+                });
+            }
+
+            // Set up filter buttons
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const parentSection = this.closest('.content-section');
+                    const sectionFilters = parentSection.querySelectorAll('.filter-btn');
+                    sectionFilters.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const filter = this.dataset.filter;
+                    if (parentSection.id === 'prayers') {
+                        displayPrayerRequests(filter);
+                    } else if (parentSection.id === 'testimonies') {
+                        displayTestimonies(filter);
+                    }
+                });
+            });
+        });
+
+        // Display prayer requests
+        function displayPrayerRequests(filter = 'all') {
+            const requests = filterPrayerRequests(filter);
+            renderPrayerRequests(requests);
+            updateStats();
+        }
+
+        // Render prayer requests
+        function renderPrayerRequests(requests) {
+            const grid = document.getElementById('prayersGrid');
+            if (!grid) return; // Guard clause if element doesn't exist
+
+            grid.innerHTML = '';
+            
+            if (requests.length === 0) {
+                grid.innerHTML = '<div class="no-data">No prayer requests found</div>';
+                return;
+            }
+
+            requests.forEach(request => {
+                const card = document.createElement('div');
+                card.className = 'prayer-card ' + (request.prayedFor ? 'prayed' : 'pending');
+                card.innerHTML = `
+                    <div class="prayer-content">
+                        <p class="prayer-text">${request.request}</p>
+                        <p class="prayer-date">Submitted: ${formatDate(request.timestamp)}</p>
+                    </div>
+                    <div class="prayer-actions">
+                        <button onclick="togglePrayedStatus(${request.id})" class="prayer-status-btn">
+                            <i class="fas ${request.prayedFor ? 'fa-check-circle' : 'fa-circle'}"></i>
+                            ${request.prayedFor ? 'Prayed' : 'Mark as Prayed'}
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Display testimonies
+        function displayTestimonies(filter = 'all') {
+            const testimonies = filterThanksgivings(filter);
+            renderTestimonies(testimonies);
+            updateTestimoniesStats();
+        }
+
+        // Render testimonies
+        function renderTestimonies(testimonies) {
+            const grid = document.getElementById('testimoniesGrid');
+            if (!grid) return; // Guard clause if element doesn't exist
+
+            grid.innerHTML = '';
+
+            if (testimonies.length === 0) {
+                grid.innerHTML = '<div class="no-data">No testimonies found</div>';
+                return;
+            }
+
+            testimonies.forEach(testimony => {
+                const card = document.createElement('div');
+                card.className = 'testimony-card ' + (testimony.approved ? 'approved' : 'pending');
+                card.innerHTML = `
+                    <div class="testimony-content">
+                        <div class="testimony-header">
+                            <span class="testimony-type">${getTestimonyTypeLabel(testimony.type)}</span>
+                            <span class="testimony-date">${formatDate(testimony.timestamp)}</span>
+                        </div>
+                        <p class="testimony-text">${testimony.testimony}</p>
+                        <p class="testimony-author">${testimony.anonymous ? 'Anonymous' : 'Church Member'}</p>
+                    </div>
+                    <div class="testimony-actions">
+                        <button onclick="toggleApprovalStatus(${testimony.id})" class="approval-status-btn">
+                            <i class="fas ${testimony.approved ? 'fa-check-circle' : 'fa-clock'}"></i>
+                            ${testimony.approved ? 'Approved' : 'Approve Testimony'}
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Toggle prayer status
+        function togglePrayedStatus(id) {
+            const request = prayerRequests.find(r => r.id === id);
+            if (request) {
+                updatePrayerRequestStatus(id, !request.prayedFor);
+                displayPrayerRequests(document.querySelector('#prayers .filter-btn.active').dataset.filter);
+            }
+        }
+
+        // Toggle testimony approval
+        function toggleApprovalStatus(id) {
+            const testimony = thanksgivings.find(t => t.id === id);
+            if (testimony) {
+                updateThanksgivingStatus(id, !testimony.approved);
+                displayTestimonies(document.querySelector('#testimonies .filter-btn.active').dataset.filter);
+            }
+        }
+
+        // Update prayer request statistics
+        function updateStats() {
+            const total = prayerRequests.length;
+            const prayed = prayerRequests.filter(r => r.prayedFor).length;
+            const pending = total - prayed;
+
+            document.getElementById('totalRequests').textContent = total;
+            document.getElementById('prayedCount').textContent = prayed;
+            document.getElementById('pendingCount').textContent = pending;
+        }
+
+        // Update testimony statistics
+        function updateTestimoniesStats() {
+            const total = thanksgivings.length;
+            const approved = thanksgivings.filter(t => t.approved).length;
+            const pending = total - approved;
+
+            document.getElementById('totalTestimonies').textContent = total;
+            document.getElementById('approvedCount').textContent = approved;
+            document.getElementById('pendingTestimonies').textContent = pending;
+        }
+
+        // Display pending announcements
+        function displayPendingAnnouncements() {
+            const pendingAnnouncements = getPendingAnnouncements();
+            renderPendingAnnouncements(pendingAnnouncements);
+        }
+
+        // Render pending announcements
+        function renderPendingAnnouncements(announcements) {
+            const grid = document.getElementById('pending-announcements');
+            if (!grid) return; // Guard clause if element doesn't exist
+
+            grid.innerHTML = '';
+
+            if (announcements.length === 0) {
+                grid.innerHTML = '<div class="no-data">No pending announcements found</div>';
+                return;
+            }
+
+            announcements.forEach(announcement => {
+                const card = document.createElement('div');
+                card.className = 'announcement-card';
+                card.innerHTML = `
+                    <div class="announcement-content">
+                        <p class="announcement-text">${announcement.text}</p>
+                        <p class="announcement-date">Posted: ${formatDate(announcement.timestamp)}</p>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Get pending announcements
+        function getPendingAnnouncements() {
+            // TO DO: implement logic to retrieve pending announcements
+            return [];
+        }
+
+        // Display weekly schedule
+        function displayWeeklySchedule() {
+            // TO DO: implement logic to display weekly schedule
+        }
+
+        // Upload weekly schedule
+        function uploadWeeklySchedule(event) {
+            event.preventDefault();
+            // TO DO: implement logic to upload weekly schedule
+        }
+
+        // Add event row
+        function addEventRow() {
+            // TO DO: implement logic to add event row
+        }
+    </script>
+</body>
+</html>

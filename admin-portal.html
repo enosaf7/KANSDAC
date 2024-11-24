@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal - SDA Church Kaneshie</title>
+    <link rel="stylesheet" href="css/admin-styles.css">
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/themes.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <nav class="portal-nav">
+            <div class="nav-brand">
+                <div class="logo">
+                    <img src="logo.png" alt="SDA Logo">
+                </div>
+                <span>Kaneshie SDA Church</span>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="#members"><i class="fas fa-users"></i> Members</a>
+                <a href="#announcements"><i class="fas fa-bullhorn"></i> Announcements</a>
+                <a href="#events"><i class="fas fa-calendar"></i> Events</a>
+                <a href="#live"><i class="fas fa-video"></i> Live Sessions</a>
+            </div>
+            <div class="nav-controls">
+                <div class="theme-toggle">
+                    <label class="switch">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="toggle-label">Dark Mode</span>
+                </div>
+                <div class="nav-profile">
+                    <a href="index.html" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i> Exit Portal
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <h1>Dashboard</h1>
+                <div class="user-info">
+                    <span>Welcome, Admin</span>
+                    <img src="images/avatar.png" alt="Admin Avatar">
+                </div>
+            </header>
+
+            <!-- Announcements Section -->
+            <section class="announcements-manager">
+                <div class="section-header">
+                    <h2>Manage Announcements</h2>
+                    <button class="add-btn" onclick="showAnnouncementForm()">
+                        <i class="fas fa-plus"></i> New Announcement
+                    </button>
+                </div>
+
+                <div class="announcement-form" id="announcementForm" style="display: none;">
+                    <form onsubmit="submitAnnouncement(event)" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input type="text" name="title" required placeholder="Announcement Title">
+                        </div>
+                        <div class="form-group">
+                            <label>Content</label>
+                            <textarea name="content" required placeholder="Announcement content..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Expiry Date</label>
+                            <input type="date" name="expiryDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Flyer Image (Optional)</label>
+                            <input type="file" name="flyer" accept="image/*" class="file-input">
+                            <small class="file-hint">Supported formats: JPG, PNG, GIF (Max size: 5MB)</small>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="submit-btn">Post Announcement</button>
+                            <button type="button" class="cancel-btn" onclick="hideAnnouncementForm()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="announcements-list">
+                    <!-- Example announcement structure -->
+                    <div class="announcement-card">
+                        <div class="announcement-content">
+                            <h3 class="announcement-title"></h3>
+                            <p class="announcement-text"></p>
+                            <span class="announcement-date"></span>
+                        </div>
+                        <div class="announcement-flyer">
+                            <img src="" alt="Announcement Flyer">
+                        </div>
+                        <div class="announcement-actions">
+                            <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                            <button class="delete-btn"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Events Section -->
+            <section class="events-manager">
+                <div class="section-header">
+                    <h2>Manage Events</h2>
+                    <button class="add-btn" onclick="showEventForm()">
+                        <i class="fas fa-plus"></i> New Event
+                    </button>
+                </div>
+
+                <div class="event-form" id="eventForm" style="display: none;">
+                    <form onsubmit="submitEvent(event)" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>Event Title</label>
+                            <input type="text" name="title" required placeholder="Enter event title">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea name="description" required placeholder="Event description..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Location</label>
+                            <input type="text" name="location" required placeholder="Enter event location">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Date</label>
+                                <input type="date" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Time</label>
+                                <input type="time" name="time" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Event Flyer (Optional)</label>
+                            <input type="file" name="eventFlyer" accept="image/*" class="file-input">
+                            <small class="file-hint">Supported formats: JPG, PNG, GIF (Max size: 5MB)</small>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="submit-btn">Create Event</button>
+                            <button type="button" class="cancel-btn" onclick="hideEventForm()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="events-list">
+                    <!-- Existing events will be listed here -->
+                </div>
+            </section>
+
+            <!-- Live Sessions Section -->
+            <section class="live-sessions-manager">
+                <div class="section-header">
+                    <h2><i class="fas fa-video"></i> Manage Live Sessions</h2>
+                    <button class="add-btn" onclick="showLiveSessionForm()">
+                        <i class="fas fa-plus"></i> New Live Session
+                    </button>
+                </div>
+
+                <div class="live-session-form" id="liveSessionForm" style="display: none;">
+                    <form onsubmit="submitLiveSession(event)">
+                        <div class="form-group">
+                            <label>Session Title</label>
+                            <input type="text" name="title" required placeholder="Enter session title">
+                        </div>
+                        <div class="form-group">
+                            <label>Session Link</label>
+                            <input type="url" name="sessionLink" required placeholder="Enter streaming link (e.g., YouTube, Zoom)">
+                        </div>
+                        <div class="form-group">
+                            <label>Session Date & Time</label>
+                            <input type="datetime-local" name="sessionDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea name="description" placeholder="Enter session description..."></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="submit-btn">Create Session</button>
+                            <button type="button" class="cancel-btn" onclick="hideLiveSessionForm()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="liveSessions" class="live-sessions-list">
+                    <!-- Live sessions will be displayed here -->
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="js/admin.js"></script>
+    <script src="js/theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Give Online - Kaneshie SDA Church</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="css/payment-portal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://js.paystack.co/v2/inline.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="portal-nav">
+        <div class="nav-brand">
+            <div class="logo">
+                <img src="images/sda-logo.png" alt="SDA Logo">
+            </div>
+            <span>Kaneshie SDA Church</span>
+        </div>
+        <div class="nav-links">
+            <a href="member-portal.html"><i class="fas fa-arrow-left"></i> Back to Portal</a>
+        </div>
+    </nav>
+
+    <main class="payment-content">
+        <div class="page-header">
+            <h1><i class="fas fa-hand-holding-heart"></i> Give Online</h1>
+            <p>Support the church's ministry through your giving</p>
+        </div>
+
+        <div class="payment-container">
+            <!-- Payment Type Selection -->
+            <div class="payment-type-section">
+                <h2>Select Payment Type</h2>
+                <div class="payment-type-grid">
+                    <div class="payment-type-card" data-type="tithe">
+                        <i class="fas fa-bible"></i>
+                        <h3>Tithe</h3>
+                        <p>Return 10% of your income</p>
+                    </div>
+                    <div class="payment-type-card" data-type="offering">
+                        <i class="fas fa-gift"></i>
+                        <h3>Offering</h3>
+                        <p>Give as you are blessed</p>
+                    </div>
+                    <div class="payment-type-card" data-type="building">
+                        <i class="fas fa-church"></i>
+                        <h3>Building Fund</h3>
+                        <p>Support church development</p>
+                    </div>
+                    <div class="payment-type-card" data-type="welfare">
+                        <i class="fas fa-hands-helping"></i>
+                        <h3>Welfare</h3>
+                        <p>Support community outreach</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Form -->
+            <form id="paymentForm" class="payment-form">
+                <div class="form-group">
+                    <label for="amount">Amount (GH₵)</label>
+                    <input type="number" id="amount" name="amount" required min="1" step="0.01">
+                </div>
+
+                <div class="form-group">
+                    <label for="paymentMethod">Payment Method</label>
+                    <div class="payment-methods-grid">
+                        <div class="payment-method-card">
+                            <input type="radio" id="mtn" name="paymentMethod" value="mtn">
+                            <label for="mtn">
+                                <img src="https://th.bing.com/th/id/OIP.lmHcGQxZZbTdYZrRRDHUKwHaHa?w=175&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="MTN MoMo">
+                                <span>MTN MoMo</span>
+                            </label>
+                        </div>
+                        <div class="payment-method-card">
+                            <input type="radio" id="vodafone" name="paymentMethod" value="vodafone">
+                            <label for="vodafone">
+                                <img src="https://th.bing.com/th/id/OIP.yvjE8kC3pGxB3Dg2p7fPZQHaHa?w=175&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Vodafone Cash">
+                                <span>Vodafone Cash</span>
+                            </label>
+                        </div>
+                        <div class="payment-method-card">
+                            <input type="radio" id="airteltigo" name="paymentMethod" value="airteltigo">
+                            <label for="airteltigo">
+                                <img src="https://th.bing.com/th/id/OIP.4hG6mHHqO9UQoDg-Y5-upgHaHa?w=186&h=186&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="AirtelTigo Money">
+                                <span>AirtelTigo Money</span>
+                            </label>
+                        </div>
+                        <div class="payment-method-card">
+                            <input type="radio" id="card" name="paymentMethod" value="card">
+                            <label for="card">
+                                <div class="card-logos">
+                                    <img src="https://th.bing.com/th/id/OIP.JUoFXB2schweE_JoUHbwPwHaEo?w=272&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Visa">
+                                    <img src="https://th.bing.com/th/id/OIP.6WaWm0qVYlw5z-0qvEmU6QHaE8?w=236&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Mastercard">
+                                </div>
+                                <span>Card Payment</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email (Optional - for receipt)</label>
+                    <input type="email" id="email" name="email">
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="anonymous" id="anonymous">
+                        Give Anonymously
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-lock"></i> Proceed to Pay
+                </button>
+            </form>
+
+            <!-- Payment Security Info -->
+            <div class="payment-info">
+                <div class="security-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <p>Your payment is secured with industry-standard encryption</p>
+                </div>
+                <div class="payment-logos">
+                    <img src="https://th.bing.com/th/id/OIP.yvXWxkqfMX1riMHqkzqZYwAAAA?w=161&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Paystack">
+                    <img src="https://th.bing.com/th/id/OIP.H8TRKqjmcNQQWpMeXUQHGwHaEK?w=333&h=187&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="PCI DSS Compliant">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="portal-footer">
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> +233 XX XXX XXXX</p>
+                <p><i class="fas fa-envelope"></i> info@kaneshisdachurch.org</p>
+            </div>
+            <div class="social-links">
+                <a href="https://web.facebook.com/kaneshie.sdachurch/?_rdc=1&_rdr" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@cosmoskmedia254" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Kaneshie SDA Church. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://js.paystack.co/v2/inline.js"></script>
+    <script src="js/payment-portal.js"></script>
+</body>
+</html> 

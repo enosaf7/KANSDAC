@@ -1,0 +1,317 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary-blue: #1a73e8;
+    --light-blue: #e8f0fe;
+    --dark-blue: #1557b0;
+    --deeper-blue: #104289;
+    --accent-green: #34a853;
+    --light-green: #e6f4ea;
+    --subtle-brown: #f5e6d3;
+    --text-dark: #202124;
+    --text-light: #ffffff;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--primary-blue);
+    background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+}
+
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Church Header Styles */
+.church-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.church-header img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 15px rgba(26, 115, 232, 0.2);
+}
+
+.church-header h1 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.church-header p {
+    color: var(--light-blue);
+    font-size: 1.1rem;
+}
+
+/* Cards Container */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+/* Card Styles */
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(26, 115, 232, 0.15);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.card-header i {
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+
+.member-card .card-header i { color: var(--primary-blue); }
+.comm-card .card-header i { color: var(--accent-green); }
+.officials-card .card-header i { color: var(--dark-blue); }
+
+.card-header h2 {
+    color: var(--text-dark);
+    font-size: 1.5rem;
+}
+
+/* Form Styles */
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-field {
+    position: relative;
+}
+
+.input-field i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+}
+
+.input-field .toggle-password {
+    left: auto;
+    right: 1rem;
+    cursor: pointer;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 1rem 2.5rem;
+    border: 2px solid var(--light-blue);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-field input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    background-color: var(--light-blue);
+}
+
+/* Form Options */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-light);
+}
+
+.forgot-password {
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Button Styles */
+.card-btn {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.card-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
+}
+
+.primary-btn {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.secondary-btn {
+    background: var(--accent-green);
+    color: white;
+}
+
+.tertiary-btn {
+    background: var(--dark-blue);
+    color: white;
+}
+
+/* Error Message */
+.error-message {
+    color: #d93025;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    min-height: 1.2rem;
+}
+
+/* Footer Styles */
+.app-footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.location-link {
+    color: white;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.location-link:hover {
+    color: var(--light-blue);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .app-container {
+        padding: 1rem;
+    }
+
+    .church-header h1 {
+        font-size: 2rem;
+    }
+
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+}
+
+.welcome-content {
+    text-align: center;
+    padding: 1.5rem 0;
+}
+
+.welcome-text {
+    color: var(--text-dark);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.member-card {
+    padding-bottom: 3rem;
+}
+
+/* Communication Team Card Button Style */
+.admin-card .card-btn {
+    background-color: #1a237e; /* Deep blue color */
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.admin-card .card-btn:hover {
+    background-color: #283593; /* Slightly lighter blue for hover */
+}
+
+/* Optional: Add a subtle glow effect on hover */
+.admin-card .card-btn:hover {
+    box-shadow: 0 0 15px rgba(26, 35, 126, 0.4);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.close {
+    float: right;
+    cursor: pointer;
+    font-size: 28px;
+}
+
+#adminPassword {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}

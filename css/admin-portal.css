@@ -1,0 +1,90 @@
+/* Schedule Management Styles */
+.schedule-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.schedule-form {
+    max-width: 500px;
+    margin-bottom: 2rem;
+}
+
+.schedule-list {
+    margin-top: 1rem;
+}
+
+.schedule-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    border-bottom: 1px solid #eee;
+}
+
+.schedule-item .time {
+    width: 100px;
+    font-weight: bold;
+}
+
+.schedule-item .activity {
+    flex: 1;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: #dc3545;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.delete-btn:hover {
+    color: #c82333;
+}
+
+/* Update existing styles to use theme variables */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.portal-nav {
+    background-color: var(--nav-background);
+    color: var(--nav-text);
+}
+
+.admin-card,
+.stats-card,
+.member-list,
+.announcement-form,
+.event-form {
+    background-color: var(--card-background);
+    color: var(--text-color);
+    border-color: var(--border-color);
+    box-shadow: var(--card-shadow);
+}
+
+input,
+select,
+textarea {
+    background-color: var(--input-background);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+.table {
+    background-color: var(--card-background);
+    color: var(--text-color);
+}
+
+.table th {
+    background-color: var(--nav-background);
+    color: var(--nav-text);
+}
+
+.table td {
+    border-color: var(--border-color);
+}
+
+/* Add any other specific admin portal elements that need theme styling */ 

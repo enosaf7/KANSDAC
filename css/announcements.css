@@ -1,0 +1,50 @@
+.announcements-page {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.page-header h1 {
+    color: #333;
+    font-size: 2.5rem;
+}
+
+.page-header h1 i {
+    color: #2196F3;
+    margin-right: 0.5rem;
+}
+
+.announcements-container {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.announcement-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.announcement-card h3 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.announcement-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.announcement-meta {
+    margin-top: 1rem;
+    color: #888;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+} 

@@ -1,0 +1,173 @@
+/* Live Session Styles */
+
+/* Live Session Form */
+.live-session-form {
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.live-session-form .form-group {
+    margin-bottom: 15px;
+}
+
+.live-session-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.live-session-form input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--input-bg-color);
+    color: var(--text-color);
+}
+
+.live-session-form button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+}
+
+.live-session-form button:hover {
+    background-color: var(--primary-hover-color);
+}
+
+/* Active Session Info */
+.active-session {
+    background-color: var(--success-bg-color);
+    border: 1px solid var(--success-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.active-session h3 {
+    color: var(--success-color);
+    margin: 0 0 15px 0;
+}
+
+.active-session p {
+    margin: 8px 0;
+    color: var(--text-color);
+}
+
+.active-session a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.active-session a:hover {
+    text-decoration: underline;
+}
+
+.end-session-btn {
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    transition: background-color 0.2s;
+}
+
+.end-session-btn:hover {
+    background-color: var(--danger-hover-color);
+}
+
+/* Live Stream Button in Member Portal */
+.action-card#liveStreamBtn {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.action-card#liveStreamBtn.active {
+    background-color: var(--success-color);
+    color: white;
+    animation: pulse 2s infinite;
+}
+
+.action-card#liveStreamBtn.active::before {
+    content: "LIVE";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.action-card#liveStreamBtn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(var(--success-rgb), 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(var(--success-rgb), 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(var(--success-rgb), 0);
+    }
+}
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 24px;
+    border-radius: 4px;
+    color: white;
+    z-index: 1000;
+    animation: slideIn 0.3s ease-out;
+}
+
+.notification.success {
+    background-color: var(--success-color);
+}
+
+.notification.info {
+    background-color: var(--info-color);
+}
+
+.notification.error {
+    background-color: var(--danger-color);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

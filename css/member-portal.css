@@ -1,0 +1,905 @@
+/* Root Variables */
+:root {
+    --primary-color: #1a73e8;
+    --secondary-color: #1557b0;
+    --text-color: #202124;
+    --background-color: #f8f9fa;
+    --white: #ffffff;
+    --border-color: #e0e0e0;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --card-bg: #ffffff;
+    --surface-color: #f8f9fa;
+    --text-secondary: #666;
+    --primary-dark: #1a73e8;
+    --container-padding: 2rem;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Navigation */
+.portal-nav {
+    background: var(--white);
+    padding: 1rem 2rem;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary-color);
+}
+
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Exit Portal Button */
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #dc3545;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(220, 53, 69, 0.2);
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+}
+
+.logout-btn i {
+    font-size: 1.1rem;
+}
+
+[data-theme="dark"] .logout-btn {
+    background-color: #f44336;
+}
+
+[data-theme="dark"] .logout-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Main Content */
+.portal-content {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: var(--container-padding);
+    overflow-x: hidden;
+}
+
+/* Welcome Section */
+.welcome-section {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.welcome-header h1 {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Quick Actions */
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.action-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.action-card:hover {
+    transform: translateY(-5px);
+}
+
+.action-card i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.action-card h3 {
+    margin-bottom: 0.5rem;
+}
+
+.action-btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    margin-top: 1rem;
+    background: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.action-btn:hover {
+    background: var(--secondary-color);
+}
+
+/* Prayer Request Section */
+.prayer-section {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 3rem;
+}
+
+.prayer-section h2 {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.prayer-form textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Thanksgiving Section */
+.thanksgiving-section {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 3rem;
+}
+
+.thanksgiving-section h2 {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+/* Submit Button */
+.submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Announcements Section */
+.announcements-wrapper {
+    display: flex;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.announcements-slideshow {
+    flex: 2;
+    min-width: 0;
+}
+
+.flyers-section {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+}
+
+#announcements-text {
+    text-align: center;
+    margin: 1rem 0;
+    color: var(--primary-color);
+    font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+}
+
+/* Announcements Slideshow */
+.slideshow-container {
+    position: relative;
+    padding: 0 4rem;
+}
+
+.slides {
+    position: relative;
+    min-height: 150px;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    background: var(--white);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.slide-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.slide-content {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.slide-navigation {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+    padding: 0 1rem;
+}
+
+.slide-nav {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    pointer-events: auto;
+}
+
+.slide-nav:hover {
+    opacity: 1;
+}
+
+.slide-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--text-color);
+    opacity: 0.3;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.dot.active {
+    opacity: 1;
+    background: var(--primary-color);
+}
+
+.slide-timer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.timer-bar {
+    width: 100%;
+    height: 100%;
+    background: var(--primary-color);
+    transform-origin: left;
+}
+
+.timer-bar.animate {
+    animation: countdown 5s linear;
+}
+
+@keyframes countdown {
+    from {
+        transform: scaleX(1);
+    }
+    to {
+        transform: scaleX(0);
+    }
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .slide-timer {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Flyers Display */
+.flyers-section {
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    background: var(--white);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    align-self: flex-start;
+    height: fit-content;
+}
+
+.flyers-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.flyers-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.flyer-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    width: 100%;
+    height: 300px; /* Reduced height */
+    background: var(--background-color);
+}
+
+.flyer-item:hover {
+    transform: translateY(-3px);
+}
+
+.flyer-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    border-radius: 8px;
+    background: var(--background-color);
+    padding: 0.5rem;
+}
+
+.flyer-item .flyer-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.5rem;
+    font-size: 0.85rem;
+    backdrop-filter: blur(4px);
+}
+
+.no-flyer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px; /* Reduced height to match flyer-item */
+    background: var(--background-color);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    color: var(--text-color);
+    border: 2px dashed var(--border-color);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1024px) {
+    .announcements-wrapper {
+        flex-direction: column;
+    }
+
+    .flyers-section {
+        max-width: none;
+        width: 100%;
+    }
+
+    .quick-actions {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .portal-content {
+        padding: 0.5rem;
+    }
+
+    .welcome-header h1 {
+        font-size: 1.5rem;
+        padding: 1rem;
+    }
+
+    #announcements-text {
+        font-size: 1.3rem;
+    }
+
+    .announcements-wrapper {
+        padding: 0.5rem;
+    }
+
+    .slide {
+        padding: 1rem;
+    }
+
+    .slide h2 {
+        font-size: 1.2rem;
+    }
+
+    .slide p {
+        font-size: 1rem;
+    }
+
+    .quick-actions {
+        grid-template-columns: 1fr;
+        padding: 0.5rem;
+    }
+
+    .action-card {
+        padding: 1rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .nav-link {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .welcome-header h1 {
+        font-size: 1.3rem;
+    }
+
+    .slide h2 {
+        font-size: 1.1rem;
+    }
+
+    .slide p {
+        font-size: 0.9rem;
+    }
+
+    .flyer-item {
+        height: 200px;
+    }
+}
+
+/* Footer */
+.portal-footer {
+    background: var(--card-bg);
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .portal-nav {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .nav-controls {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .portal-content {
+        padding: 0 1rem;
+    }
+}
+
+/* Confirmation Messages */
+.confirmation-message {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 6px;
+    text-align: center;
+    display: none;
+}
+
+/* Live Stream Button */
+.stream-btn {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.stream-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+.stream-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.live-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+}
+
+.status-indicator.live {
+    background-color: #4caf50;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Mobile-first responsive design */
+@media screen and (max-width: 768px) {
+    .portal-content {
+        padding: 1rem;
+    }
+
+    #announcements-text {
+        font-size: 1.5rem;
+        margin: 0.75rem 0;
+    }
+
+    .announcements-wrapper {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .announcements-slideshow {
+        width: 100%;
+    }
+
+    .slide {
+        padding: 1rem;
+    }
+
+    .slide h2 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .slide p {
+        font-size: 0.95rem;
+    }
+
+    .slide-meta {
+        font-size: 0.85rem;
+    }
+
+    .slide-nav {
+        padding: 0.5rem;
+        font-size: 1rem;
+    }
+
+    .flyers-section {
+        width: 100%;
+        max-width: none;
+        min-width: auto;
+    }
+
+    .quick-actions {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .action-card {
+        padding: 1rem;
+    }
+
+    .action-card i {
+        font-size: 1.5rem;
+    }
+
+    .action-card h3 {
+        font-size: 1.1rem;
+    }
+
+    /* Navigation adjustments */
+    .nav-container {
+        padding: 0.5rem;
+    }
+
+    .nav-links {
+        gap: 0.5rem;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+
+    .nav-link i {
+        font-size: 1rem;
+    }
+
+    /* Welcome section */
+    .welcome-header h1 {
+        font-size: 1.5rem;
+        padding: 1rem;
+    }
+}
+
+/* Even smaller screens */
+@media screen and (max-width: 480px) {
+    .portal-content {
+        padding: 0.75rem;
+    }
+
+    #announcements-text {
+        font-size: 1.3rem;
+    }
+
+    .slide {
+        padding: 0.75rem;
+    }
+
+    .slide h2 {
+        font-size: 1.1rem;
+    }
+
+    .slide p {
+        font-size: 0.9rem;
+    }
+
+    .slide-dots .dot {
+        width: 8px;
+        height: 8px;
+        margin: 0 4px;
+    }
+
+    .slide-nav {
+        padding: 0.4rem;
+        font-size: 0.9rem;
+    }
+
+    .flyer-item {
+        height: 200px;
+    }
+
+    .flyer-overlay {
+        font-size: 0.8rem;
+    }
+
+    .action-card {
+        padding: 0.75rem;
+    }
+
+    .action-card i {
+        font-size: 1.3rem;
+    }
+
+    .action-card h3 {
+        font-size: 1rem;
+    }
+}

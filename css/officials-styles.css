@@ -1,0 +1,1427 @@
+/* Main Layout */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --background-color: #f5f6fa;
+    --text-color: #2c3e50;
+    --sidebar-width: 250px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+.portal-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--primary-color);
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.logo {
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+.nav-links {
+    list-style: none;
+    margin-top: 30px;
+}
+
+.nav-links li {
+    padding: 15px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.nav-links li:hover,
+.nav-links li.active {
+    background: var(--secondary-color);
+    border-radius: 8px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.content-section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.content-section.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Dashboard Styles */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.quick-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+/* Profile Styles */
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 30px;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Documents Styles */
+.documents-container {
+    padding: 20px;
+}
+
+.document-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.documents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* Messages Styles */
+.messages-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+    height: 600px;
+}
+
+.messages-list {
+    border-right: 1px solid #eee;
+    overflow-y: auto;
+}
+
+/* Calendar Styles */
+.calendar-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+/* Prayer Requests & Thanksgiving Styles */
+.prayers-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.prayers-filters {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    color: var(--primary-color);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.filter-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.prayers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.prayer-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-left: 4px solid #ddd;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.prayer-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.prayer-card.request {
+    border-left-color: #e74c3c;
+}
+
+.prayer-card.thanksgiving {
+    border-left-color: #2ecc71;
+}
+
+.prayer-card.prayed-for {
+    background: #f8f9fa;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.badge {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    color: white;
+}
+
+.badge.request {
+    background: #e74c3c;
+}
+
+.badge.thanksgiving {
+    background: #2ecc71;
+}
+
+.prayed-badge {
+    background: #3498db;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.card-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.card-actions button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.3s;
+}
+
+.pray-btn {
+    background: #3498db;
+    color: white;
+}
+
+.pray-btn:hover {
+    background: #2980b9;
+}
+
+.feedback-btn {
+    background: #2ecc71;
+    color: white;
+}
+
+.feedback-btn:hover {
+    background: #27ae60;
+}
+
+.undo-btn {
+    background: #95a5a6;
+    color: white;
+}
+
+.undo-btn:hover {
+    background: #7f8c8d;
+}
+
+.prayer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 15px;
+}
+
+.prayer-type {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: white;
+}
+
+.prayer-type.request {
+    background: #e74c3c;
+}
+
+.prayer-type.thanksgiving {
+    background: #2ecc71;
+}
+
+.prayer-content {
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.prayer-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #888;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.prayer-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.prayer-actions button {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.prayer-actions button:hover {
+    color: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 70px;
+    }
+
+    .sidebar span,
+    .sidebar h2 {
+        display: none;
+    }
+
+    .messages-container {
+        grid-template-columns: 1fr;
+    }
+
+    .prayers-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .prayers-filters {
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+} 
+
+/* Add these new styles */
+.unread {
+    border-left-width: 6px;
+    background: #f8f9fa;
+}
+
+.new-badge {
+    background: #e74c3c;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    margin-right: 8px;
+}
+
+.prayers-badge {
+    background: #e74c3c;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    display: none;
+}
+
+.prayer-search {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #dc3545;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(220, 53, 69, 0.2);
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+}
+
+.logout-btn i {
+    font-size: 1.1rem;
+}
+
+[data-theme="dark"] .logout-btn {
+    background-color: #f44336;
+}
+
+[data-theme="dark"] .logout-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Card styles */
+.card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.badge {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    color: white;
+}
+
+.badge.request { background: #e74c3c; }
+.badge.thanksgiving { background: #2ecc71; }
+.badge.pending { background: #f39c12; }
+.badge.approved { background: #2ecc71; }
+
+/* Grid layouts */
+.prayers-grid,
+.announcements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Search and filters */
+.search-bar {
+    padding: 20px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+    padding: 0 20px;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background: #eee;
+}
+
+.filter-btn.active {
+    background: var(--primary-color);
+    color: white;
+} 
+
+/* Prayer Stats */
+.prayers-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 20px;
+}
+
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.stat-card i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.stat-info h4 {
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.stat-info span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Prayer Cards */
+.prayers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.prayer-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.prayer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.prayer-badge {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    color: white;
+}
+
+.prayer-badge.request { background: #e74c3c; }
+.prayer-badge.thanksgiving { background: #2ecc71; }
+.prayer-badge.prayed { background: #3498db; }
+
+.prayer-content {
+    color: #666;
+    line-height: 1.6;
+}
+
+.prayer-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #888;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.prayer-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s;
+}
+
+.pray-btn {
+    background: #3498db;
+    color: white;
+}
+
+.feedback-btn {
+    background: #2ecc71;
+    color: white;
+} 
+
+/* Section Visibility */
+.content-section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.content-section.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Navigation */
+.nav-links li {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.nav-links li.active {
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.nav-links li.active a {
+    color: #4CAF50;
+}
+
+/* No Data Message */
+.no-data {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Make first section visible by default */
+#prayers.content-section {
+    display: block;
+    opacity: 1;
+}
+
+/* Pending Announcements Styles */
+#pending-announcements {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.announcement-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.announcement-card:hover {
+    transform: translateY(-5px);
+}
+
+.announcement-card .card-header {
+    padding: 15px;
+    background: var(--primary-color);
+    color: white;
+}
+
+.announcement-card .card-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.announcement-card .card-content {
+    padding: 15px;
+}
+
+.announcement-card .meta-info {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    font-size: 0.9rem;
+    color: #666;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.announcement-card .flyer-preview {
+    margin: 10px 0;
+}
+
+.announcement-card .flyer-preview img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.announcement-card .card-actions {
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+    background: #f8f9fa;
+    border-top: 1px solid #eee;
+}
+
+.approve-btn {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.2s;
+    flex: 1;
+}
+
+.approve-btn:hover {
+    background-color: #27ae60;
+}
+
+.reject-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.2s;
+    flex: 1;
+}
+
+.reject-btn:hover {
+    background-color: #c0392b;
+}
+
+.no-data {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Schedule Preview Styles */
+.schedule-preview {
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.preview-header h4 {
+    margin: 0;
+    color: var(--primary-color);
+}
+
+.preview-date {
+    color: var(--secondary-text-color);
+    font-size: 0.9rem;
+}
+
+.preview-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.preview-events {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.preview-event {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    background-color: var(--card-bg-color);
+    border-radius: 4px;
+}
+
+.preview-time {
+    min-width: 100px;
+    padding: 4px 8px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-right: 15px;
+}
+
+.preview-activity {
+    color: var(--text-color);
+}
+
+.preview-footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.deactivate-btn {
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+}
+
+.deactivate-btn:hover {
+    background-color: var(--danger-hover-color);
+}
+
+/* Schedule Form Styles */
+.schedule-form {
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-events-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.schedule-event-row {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    background-color: var(--card-bg-color);
+    padding: 15px;
+    border-radius: 6px;
+}
+
+.event-inputs {
+    display: flex;
+    gap: 15px;
+    flex-grow: 1;
+}
+
+.event-inputs input {
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--input-bg-color);
+    color: var(--text-color);
+}
+
+.event-inputs input[type="time"] {
+    width: 120px;
+}
+
+.event-inputs input[type="text"] {
+    flex-grow: 1;
+}
+
+.remove-event {
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.remove-event:hover {
+    background-color: var(--danger-hover-color);
+}
+
+.add-event-btn {
+    background-color: var(--success-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+}
+
+.add-event-btn:hover {
+    background-color: var(--success-hover-color);
+}
+
+/* Live Sessions Styles */
+.live-sessions-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.session-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.session-card[data-status="live"] {
+    border: 2px solid #2ecc71;
+    animation: pulse 2s infinite;
+}
+
+.session-card[data-status="live"]::before {
+    content: "LIVE";
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: #e74c3c;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
+    }
+    100% {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.session-header {
+    padding: 15px;
+    background: var(--primary-color);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.session-card[data-status="live"] .session-header {
+    background: #27ae60;
+}
+
+.session-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.status {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.status.upcoming {
+    background: #f1c40f;
+    color: #000;
+}
+
+.status.live {
+    background: #2ecc71;
+    color: white;
+}
+
+.status.ended {
+    background: #95a5a6;
+    color: white;
+}
+
+.session-content {
+    padding: 15px;
+}
+
+.session-meta {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.session-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.session-link:hover {
+    text-decoration: underline;
+}
+
+.session-actions {
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+    background: #f8f9fa;
+    border-top: 1px solid #eee;
+}
+
+.status-btn {
+    flex: 1;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.status-btn.upcoming {
+    background: #f1c40f;
+    color: #000;
+}
+
+.status-btn.live {
+    background: #e74c3c;
+    color: white;
+}
+
+.status-btn.ended {
+    background: #95a5a6;
+    color: white;
+}
+
+.delete-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #e74c3c;
+    color: white;
+    transition: background-color 0.2s;
+}
+
+.delete-btn:hover {
+    background: #c0392b;
+}
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 24px;
+    border-radius: 5px;
+    color: white;
+    z-index: 1000;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.notification.success {
+    background: #2ecc71;
+}
+
+.notification.info {
+    background: #3498db;
+}
+
+.notification.error {
+    background: #e74c3c;
+}
+
+/* Live Stream Button in Member Portal */
+#liveStreamBtn {
+    position: relative;
+}
+
+#liveStreamBtn[data-status="live"] {
+    border: 2px solid #2ecc71;
+    animation: pulse 2s infinite;
+}
+
+#liveStreamBtn[data-status="live"]::before {
+    content: "LIVE NOW";
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: #e74c3c;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Live Stream Button Styles */
+.live-status {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #95a5a6;
+}
+
+.status-text {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.stream-btn {
+    width: 100%;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.stream-btn:disabled {
+    background: #95a5a6;
+    cursor: not-allowed;
+}
+
+.stream-btn:not(:disabled):hover {
+    background: var(--secondary-color);
+}
+
+/* Live Session Card Active State */
+.session-card[data-status="live"] {
+    border: 2px solid #2ecc71;
+    animation: pulse 2s infinite;
+    position: relative;
+}
+
+.session-card[data-status="live"]::before {
+    content: "LIVE";
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: #e74c3c;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
+    }
+    100% {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.session-header {
+    padding: 15px;
+    background: var(--primary-color);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.session-card[data-status="live"] .session-header {
+    background: #27ae60;
+}
+
+.session-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.status {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.status.upcoming {
+    background: #f1c40f;
+    color: #000;
+}
+
+.status.live {
+    background: #2ecc71;
+    color: white;
+}
+
+.status.ended {
+    background: #95a5a6;
+    color: white;
+}
+
+.session-content {
+    padding: 15px;
+}
+
+.session-meta {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.session-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.session-link:hover {
+    text-decoration: underline;
+}
+
+.session-actions {
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+    background: #f8f9fa;
+    border-top: 1px solid #eee;
+}
+
+.status-btn {
+    flex: 1;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.status-btn.upcoming {
+    background: #f1c40f;
+    color: #000;
+}
+
+.status-btn.live {
+    background: #e74c3c;
+    color: white;
+}
+
+.status-btn.ended {
+    background: #95a5a6;
+    color: white;
+}
+
+.delete-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #e74c3c;
+    color: white;
+    transition: background-color 0.2s;
+}
+
+.delete-btn:hover {
+    background: #c0392b;
+}
+
+/* Live Stream Button Active State */
+.action-card[data-status="live"] {
+    border: 2px solid #2ecc71;
+    animation: pulse 2s infinite;
+}
+
+.action-card[data-status="live"] .stream-btn:not(:disabled) {
+    background: #2ecc71;
+    font-weight: bold;
+}
+
+.action-card[data-status="live"]::before {
+    content: "LIVE NOW";
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: #e74c3c;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.time-left {
+    font-size: 0.9em;
+    color: #666;
+    margin-left: 8px;
+}
+
+[data-theme="dark"] .time-left {
+    color: #aaa;
+}
+
+.prayed-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #28a745;
+    font-weight: 500;
+}
+
+[data-theme="dark"] .prayed-status {
+    color: #2ecc71;
+}

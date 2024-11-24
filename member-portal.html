@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Member Portal - Kaneshie SDA Church</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <!-- Core styles -->
+    <link rel="stylesheet" href="css/member-portal.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- JavaScript files -->
+    <script src="js/member-portal.js" defer></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="portal-nav">
+        <div class="nav-brand">
+            <div class="logo">
+                <img src="C:\Users\OSAFO Enoch Agyei\OneDrive\Desktop\sda.jpg" alt="SDA Logo">
+            </div>
+            <span>Kaneshie SDA Church</span>
+        </div>
+        <div class="nav-links">
+            <a href="#" class="active"><i class="fas fa-home"></i> Home</a>
+            <a href="events-page.html"><i class="fas fa-calendar"></i> Events</a>
+            <a href="payment-portal.html"><i class="fas fa-hand-holding-heart"></i> Giving</a>
+            <a href="#prayers"><i class="fas fa-pray"></i> Prayer Requests</a>
+        </div>
+        <div class="nav-controls">
+            <div class="theme-toggle">
+                <label class="switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider round"></span>
+                </label>
+                <span class="toggle-label">Dark Mode</span>
+            </div>
+            <div class="nav-profile">
+                <a href="index.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Exit Portal
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!-- Main Content -->
+    <main class="portal-content">
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <div class="welcome-header">
+                <h1>Welcome to Your Church Portal</h1>
+            </div>
+        </section>
+           <!-- Announcements and Flyers Section -->
+            <H1 id="announcements-text">Announcements</H1>
+<div class="announcements-wrapper">
+    <!-- Announcements Slideshow -->
+    <section class="announcements-slideshow">
+        <div class="slideshow-container">
+            <div class="slides">
+                <!-- Slides will be added here by JavaScript -->
+            </div>
+            <div class="slide-navigation">
+                <button class="slide-nav prev">❮</button>
+                <button class="slide-nav next">❯</button>
+            </div>
+            <div class="slide-dots">
+                <!-- Dots will be added here by JavaScript -->
+            </div>
+            <div class="slide-timer">
+                <div class="timer-bar"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flyers Section -->
+    <section class="flyers-section">
+        <h3>Announcement Flyer</h3>
+        <div class="flyers-container">
+            <!-- Flyers will be added here by JavaScript -->
+        </div>
+    </section>
+</div>
+
+        <!-- Quick Actions -->
+        <section class="quick-actions">
+            <div class="action-card">
+                <i class="fas fa-hand-holding-heart"></i>
+                <h3>Give Online</h3>
+                <p>Submit your tithes and offerings online</p>
+                <a href="payment-portal.html" class="action-btn">Give Now</a>
+            </div>
+            <div class="action-card" id="liveStreamBtn">
+                <i class="fas fa-video"></i>
+                <h3>Live Stream</h3>
+                <div class="live-status">
+                    <span class="status-indicator"></span>
+                    <span class="status-text">Checking status...</span>
+                </div>
+                <button onclick="openLiveStream()" class="action-btn stream-btn" disabled>Join Stream</button>
+            </div>
+            <div class="action-card">
+                <i class="fas fa-book-reader"></i>
+                <h3>EGW Writings</h3>
+                <p>Access Ellen G. White's writings</p>
+                <a href="https://egwwritings.org" class="action-btn">Read Now</a>
+            </div>
+            <div class="action-card">
+                <i class="fas fa-cross"></i>
+                <h3>28 Fundamentals</h3>
+                <p>Learn about SDA beliefs</p>
+                <a href="https://en.wikipedia.org/wiki/28_Fundamental_Beliefs" target="_blank" class="action-btn">Learn More</a>
+            </div>
+            <div class="action-card">
+                <i class="fas fa-book"></i>
+                <h3>Sabbath School</h3>
+                <p>Access weekly lessons and resources</p>
+                <a href="https://www.sabbath.school/" target="_blank" class="action-btn">Study Now</a>
+            </div>
+            <div class="action-card">
+                <i class="fas fa-music"></i>
+                <h3>SDA Hymnal</h3>
+                <p>Access all church hymns online</p>
+                <a href="https://www.sdahymnal.org" target="_blank" class="action-btn">View Hymns</a>
+            </div>
+        </section>
+
+        <!-- Sabbath Program Schedule -->
+        <section class="sabbath-schedule">
+            <h2><i class="fas fa-clock"></i> Weekly Program Schedule</h2>
+            <div id="weeklySchedule" class="schedule-container">
+                <!-- Schedule will be loaded dynamically -->
+            </div>
+        </section>
+        <!-- Prayer Request Section -->
+        <section id="prayers" class="prayer-section">
+            <h2><i class="fas fa-pray"></i> Prayer Requests</h2>
+            <form id="prayerForm" class="prayer-form" onsubmit="handlePrayerSubmit(event)">
+                <textarea 
+                    name="prayerRequest" 
+                    id="prayerRequest" 
+                    placeholder="Share your prayer request..."
+                    required
+                ></textarea>
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Submit Prayer Request
+                </button>
+            </form>
+            <div id="confirmationMessage" class="confirmation-message" style="display: none;">
+                Your prayer request has been submitted. The church officials will pray for you.
+            </div>
+        </section>
+
+        <!-- Thanksgiving Section -->
+        <section id="thanksgiving" class="thanksgiving-section">
+            <h2><i class="fas fa-dove"></i> Share Your Testimony</h2>
+            <form id="testimonyForm" class="thanksgiving-form" onsubmit="handleTestimonySubmit(event)">
+                <div class="form-group">
+                    <label for="testimonyType">Type of Testimony</label>
+                    <select id="testimonyType" name="testimonyType" required>
+                        <option value="">Select type...</option>
+                        <option value="healing">Divine Healing</option>
+                        <option value="provision">Divine Provision</option>
+                        <option value="protection">Divine Protection</option>
+                        <option value="guidance">Divine Guidance</option>
+                        <option value="other">Other Blessings</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="testimony">Your Testimony</label>
+                    <textarea 
+                        id="testimony" 
+                        name="testimony" 
+                        placeholder="Share how God has blessed you..." 
+                        rows="4" 
+                        required
+                    ></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="anonymous" id="anonymous">
+                        Submit Anonymously
+                    </label>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Share Testimony
+                </button>
+            </form>
+            <div id="testimonyConfirmationMessage" class="confirmation-message" style="display: none;">
+                Your testimony has been submitted and will be reviewed by the church officials.
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="portal-footer">
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> +233 XX XXX XXXX</p>
+                <p><i class="fas fa-envelope"></i> info@kaneshisdachurch.org</p>
+            </div>
+            <div class="social-links">
+                <a href="https://web.facebook.com/kaneshie.sdachurch/?_rdc=1&_rdr" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@cosmoskmedia254" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Kaneshie SDA Church. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/theme.js"></script>
+    <script>
+        function handlePrayerSubmit(event) {
+            event.preventDefault();
+            const textarea = document.getElementById('prayerRequest');
+            const request = textarea.value.trim();
+            
+            if (request) {
+                submitPrayerRequest(request);
+                textarea.value = '';
+                
+                const confirmationMessage = document.getElementById('confirmationMessage');
+                confirmationMessage.style.display = 'block';
+                setTimeout(() => {
+                    confirmationMessage.style.display = 'none';
+                }, 3000);
+            }
+        }
+    </script>
+    <script>
+        function handleTestimonySubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const data = {
+                type: form.testimonyType.value,
+                testimony: form.testimony.value.trim(),
+                anonymous: form.anonymous.checked
+            };
+            
+            if (data.testimony && data.type) {
+                submitThanksgiving(data);
+                form.reset();
+                
+                const confirmationMessage = document.getElementById('testimonyConfirmationMessage');
+                confirmationMessage.style.display = 'block';
+                setTimeout(() => {
+                    confirmationMessage.style.display = 'none';
+                }, 3000);
+            }
+        }
+    </script>
+    <script>
+        function checkLiveStatus() {
+            const liveSessions = JSON.parse(localStorage.getItem('liveSessions') || '[]');
+            const liveSession = liveSessions.find(session => session.status === 'live');
+            
+            const liveStreamBtn = document.getElementById('liveStreamBtn');
+            const statusIndicator = document.querySelector('.status-indicator');
+            const statusText = document.querySelector('.status-text');
+            const streamBtn = document.querySelector('.stream-btn');
+            
+            // Remove previous status
+            liveStreamBtn.removeAttribute('data-status');
+            
+            if (liveSession) {
+                statusIndicator.style.backgroundColor = '#2ecc71';
+                statusText.textContent = 'Live Now: ' + liveSession.title;
+                streamBtn.disabled = false;
+                streamBtn.onclick = () => window.open(liveSession.sessionLink, '_blank');
+                liveStreamBtn.setAttribute('data-status', 'live');
+            } else {
+                const upcomingSession = liveSessions.find(session => session.status === 'upcoming');
+                if (upcomingSession) {
+                    statusIndicator.style.backgroundColor = '#f1c40f';
+                    statusText.textContent = 'Next Stream: ' + new Date(upcomingSession.sessionDate).toLocaleString();
+                    streamBtn.disabled = true;
+                } else {
+                    statusIndicator.style.backgroundColor = '#95a5a6';
+                    statusText.textContent = 'No streams scheduled';
+                    streamBtn.disabled = true;
+                }
+            }
+        }
+
+        // Check live status every 30 seconds
+        setInterval(checkLiveStatus, 30000);
+        
+        // Initial check
+        document.addEventListener('DOMContentLoaded', checkLiveStatus);
+    </script>
+</body>
+</html>

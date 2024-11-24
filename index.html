@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Welcome to Kaneshie SDA Church - Your spiritual home in Kaneshie">
+    <meta property="og:title" content="Kaneshie SDA Church">
+    <meta property="og:description" content="Access the digital platform of Kaneshie SDA Church">
+    <meta property="og:image" content="/images/church-logo.png">
+    <title>Kaneshie SDA Church</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Church Logo and Title -->
+        <div class="church-header">
+            <div class="logo">
+                <img src="https://th.bing.com/th?id=OIP.oQbCvl-yKg0GehZ7nlj4TAHaHa&w=250&h=250&c=8&rs=1&qlt=90&r=0&o=6&dpr=1.5&pid=3.1&rm=2" alt="SDA Church Logo">
+            </div>
+            <h1>Kaneshie SDA Church</h1>
+            <p>Welcome to our digital platform</p>
+        </div>
+
+        <!-- Cards Container -->
+        <div class="cards-container">
+            <!-- Member Welcome Card -->
+            <div class="card member-card">
+                <div class="card-header">
+                    <i class="fas fa-user-circle"></i>
+                    <h2>Welcome Members</h2>
+                </div>
+                <div class="welcome-content">
+                    <p class="welcome-text">Welcome to our digital church platform. Click below to explore.</p>
+                    <a href="member-portal.html" class="card-btn primary-btn">
+                        <span>Welcome</span>
+                        <i class="fas fa-church"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Communication Team Card -->
+            <div class="card admin-card">
+                <div class="card-header">
+                    <i class="fas fa-bullhorn"></i>
+                    <h2>Communication Team</h2>
+                </div>
+                <div class="welcome-content">
+                    <p class="welcome-text">Manage church announcements and events</p>
+                    <button onclick="showAdminModal()" class="card-btn welcome-btn">
+                        <span>Access Portal</span>
+                        <i class="fas fa-bullhorn"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Church Officials Card -->
+            <div class="card officials-card">
+                <div class="card-header">
+                    <i class="fas fa-users"></i>
+                    <h2>Church Officials</h2>
+                </div>
+                <div class="welcome-content">
+                    <p class="welcome-text">Access the church officials portal</p>
+                    <button onclick="showOfficialsModal()" class="card-btn tertiary-btn">
+                        <span>Access Portal</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <a href="https://www.google.com/maps?q=Kaneshie+SDA+Church" 
+               target="_blank" 
+               class="location-link">
+                <i class="fas fa-map-marker-alt"></i>
+                Find us on Google Maps
+            </a>
+            <!-- Update the social links in the footer -->
+            <div class="social-links">
+                <a href="https://web.facebook.com/kaneshie.sdachurch/?_rdc=1&_rdr" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@cosmoskmedia254" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </footer>
+    </div>
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login Required</h2>
+            <input type="password" id="adminPassword" placeholder="Enter password">
+            <button onclick="verifyPassword('admin')" class="card-btn primary-btn">
+                <span>Login</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+    <div id="officialsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login Required</h2>
+            <input type="password" id="officialsPassword" placeholder="Enter password">
+            <button onclick="verifyPassword('officials')" class="card-btn primary-btn">
+                <span>Login</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+    <script src="js/login.js"></script>
+</body>
+</html>
